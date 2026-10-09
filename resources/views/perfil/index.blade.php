@@ -2,23 +2,39 @@
 @section('title', 'Mi Perfil - EcoValor')
 
 @section('content')
-<!-- Fondo amigable: menta/salvia suave, cálido y descansado a la vista -->
-<div class="min-h-screen bg-gradient-to-b from-emerald-100/60 via-slate-50 to-emerald-50/80 flex justify-center py-5 px-3">
-    <div class="relative w-full max-w-sm bg-white/95 rounded-[28px] border border-emerald-100 shadow-xl shadow-emerald-950/5 overflow-hidden pb-8">
+<!-- Fondo amigable: menta/salvia suave con fotografía ambiental tenue -->
+<div class="relative min-h-screen bg-gradient-to-b from-emerald-100/60 via-slate-50 to-emerald-50/80 flex justify-center py-5 px-3 overflow-hidden">
+
+    <!-- Fotografía ambiental de entorno con velo suave -->
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <img src="{{ asset('imagen/entorno.jpg') }}"
+             alt="Fondo Cusco"
+             class="w-full h-full object-cover opacity-60 filter saturate-125">
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-50/70 via-white/80 to-emerald-50/90"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-sm bg-white/95 backdrop-blur-sm rounded-[28px] border border-emerald-100 shadow-xl shadow-emerald-950/5 overflow-hidden pb-8">
 
         <!-- Detalle decorativo superior de naturaleza -->
         <div class="absolute -top-12 -right-12 w-36 h-36 bg-emerald-200/50 rounded-full blur-2xl pointer-events-none"></div>
         <div class="absolute top-20 -left-12 w-28 h-28 bg-teal-200/40 rounded-full blur-xl pointer-events-none"></div>
 
-        <!-- Barra superior -->
+        <!-- Barra superior con mini logo -->
         <div class="relative z-10 px-5 pt-5 pb-3 flex items-center justify-between border-b border-emerald-100/70">
             <a href="{{ route('home') }}"
-               class="w-9 h-9 rounded-2xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 flex items-center justify-center transition active:scale-95 border border-emerald-200/60">
+               class="w-9 h-9 rounded-2xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 flex items-center justify-center transition active:scale-95 border border-emerald-200/60 shadow-sm">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
                 </svg>
             </a>
-            <h2 class="text-sm font-extrabold text-slate-800 tracking-wide">Mi Perfil</h2>
+
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-white p-0.5 shadow-sm overflow-hidden flex items-center justify-center border border-emerald-300">
+                    <img src="{{ asset('imagen/Logo.png') }}" alt="Logo" class="w-full h-full object-contain rounded-full">
+                </div>
+                <h2 class="text-sm font-extrabold text-slate-800 tracking-wide">Mi Perfil</h2>
+            </div>
+
             <button type="button" onclick="document.getElementById('modal-editar-perfil').classList.remove('hidden')"
                     class="text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3.5 py-1.5 rounded-xl border border-emerald-200/80 transition active:scale-95 shadow-sm">
                 Editar
@@ -27,7 +43,7 @@
 
         <div class="relative z-10 px-5 pt-4 space-y-4">
 
-            <!-- Ficha de Usuario y Avatar Amigable -->
+            <!-- Ficha de Usuario y Avatar -->
             <div class="flex flex-col items-center text-center">
                 <div class="relative mb-2">
                     <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-emerald-500 via-teal-400 to-lime-300 p-1 shadow-md shadow-emerald-500/20">
@@ -53,8 +69,16 @@
                 </div>
             </div>
 
-            <!-- Tarjeta Viva de Puntos Acumulados -->
+            <!-- Tarjeta de Puntos con MARCA DE AGUA DEL LOGO -->
             <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white shadow-lg shadow-emerald-600/25 flex items-center justify-between relative overflow-hidden">
+
+                <!-- Logo como marca de agua en la tarjeta -->
+                <div class="absolute -right-3 -bottom-3 w-28 h-28 rounded-full overflow-hidden pointer-events-none select-none opacity-20 filter contrast-125">
+                    <img src="{{ asset('imagen/logo.png') }}"
+                         alt="Logo Marca de Agua"
+                         class="w-full h-full object-contain mix-blend-screen">
+                </div>
+
                 <div class="relative z-10">
                     <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-100">EcoPuntos Disponibles</span>
                     <h4 class="text-2xl font-black mt-0.5 tracking-tight">
@@ -69,7 +93,7 @@
                 </a>
             </div>
 
-            <!-- Menú de Acciones con Iconos Coloridos y Claros -->
+            <!-- Menú de Acciones -->
             <div class="space-y-2.5 pt-1">
 
                 <!-- Mis Cupones -->
@@ -88,6 +112,7 @@
                 </a>
 
                 <!-- Historial de Reciclaje -->
+                @if(Route::has('entrega.historial'))
                 <a href="{{ route('entrega.historial') }}"
                    class="flex items-center justify-between p-3.5 rounded-2xl bg-emerald-50/50 hover:bg-emerald-50 border border-emerald-100/80 transition active:scale-[0.99] shadow-sm">
                     <div class="flex items-center gap-3">
@@ -101,6 +126,7 @@
                     </div>
                     <span class="text-xs text-emerald-600 font-bold bg-emerald-100/60 w-6 h-6 rounded-full flex items-center justify-center">›</span>
                 </a>
+                @endif
 
                 <!-- Notificaciones al Celular -->
                 <div class="flex items-center justify-between p-3.5 rounded-2xl bg-emerald-50/50 border border-emerald-100/80 shadow-sm">
@@ -135,7 +161,7 @@
                 </a>
             </div>
 
-            <!-- Botón Cerrar Sesión Amigable -->
+            <!-- Botón Cerrar Sesión -->
             <form action="{{ route('logout') }}" method="POST" class="pt-2">
                 @csrf
                 <button type="submit" onclick="return confirm('¿Deseas cerrar sesión?')"
@@ -208,7 +234,7 @@ function activarNotificaciones(checkbox) {
                 estado.textContent = "Avisos activados";
                 new Notification("EcoValor Cusco", {
                     body: "¡Genial! Te notificaremos cada vez que sumes EcoPuntos.",
-                    icon: "/favicon.ico"
+                    icon: "{{ asset('imagen/icono-192.png') }}"
                 });
             } else {
                 checkbox.checked = false;

@@ -1,57 +1,67 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a EcoValor Cusco')
+@section('title', 'Bienvenido - EcoValor Cusco')
 
 @section('content')
-<!-- Contenedor Principal: Ocupa el 100% del alto y ancho del marco -->
-<div class="relative w-full h-full flex flex-col justify-between overflow-hidden">
+<div class="relative w-full h-full min-h-[640px] flex flex-col justify-between p-6 overflow-hidden select-none">
 
-    <!-- Capa 1: Imagen de Entorno (Cusco) cubriendo toda la superficie -->
-    <div class="absolute inset-0 z-0">
-        <img
-            src="{{ asset('imagen/icono-512.png') }}"
-            alt="Entorno Cusco"
-            class="w-full h-full object-cover object-center"
-        >
-        <!-- Capa 2: Degradado para legibilidad y tono verdusco característico -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-emerald-950/60 to-emerald-950/95"></div>
+    <!-- Imagen de fondo real (Plaza de Cusco / Entorno) con degradado -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+        <img src="{{ asset('imagen/entorno.jpg') }}"
+             alt="Cusco Sostenible"
+             class="w-full h-full object-cover"
+             onerror="this.src='{{ asset('imagen/logo.png') }}';">
+        <!-- Filtro degradado: oscuro arriba y abajo para que el texto y botones resalten con total nitidez -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0d1d17]/80 via-black/35 to-[#081811]/95"></div>
     </div>
 
-    <!-- Capa 3: Encabezado con Logo y Títulos -->
-    <div class="relative z-10 pt-16 px-6 text-center">
-        <!-- Logo Circular -->
-        <div class="w-28 h-28 mx-auto mb-4 bg-white/95 p-2 rounded-full shadow-2xl backdrop-blur flex items-center justify-center border-4 border-emerald-400">
-            <img
-                src="{{ asset('imagen/icono-192.png') }}"
-                alt="Logo EcoValor Cusco"
-                class="w-full h-full object-contain"
-            >
+    <!-- Parte Superior: Insignia circular y títulos -->
+    <div class="relative z-10 pt-6 flex flex-col items-center text-center">
+
+        <!-- Logo en círculo blanco con relieve -->
+        <div class="w-24 h-24 rounded-full bg-white p-2.5 shadow-2xl shadow-black/70 border-2 border-emerald-400/50 flex items-center justify-center mb-3 transition hover:scale-105 duration-300">
+            <img src="{{ asset('imagen/logo.png') }}"
+                 alt="Logo EcoValor"
+                 class="w-full h-full object-contain rounded-full"
+                 onerror="this.src='{{ asset('imagen/Logo_Ecovalor.jpg') }}';">
         </div>
 
-        <h1 class="text-3xl font-extrabold text-white tracking-wide drop-shadow-lg">
+        <h1 class="text-2xl font-black text-white tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             EcoValor Cusco
         </h1>
-
-        <p class="text-emerald-200 text-sm font-medium mt-2 drop-shadow leading-relaxed">
+        <p class="text-xs font-semibold text-emerald-300 mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
             ¡Recicla, Separa y Gana en la Ciudad Imperial!
         </p>
     </div>
 
-    <!-- Capa 4: Botones de Acción en la parte inferior -->
-    <div class="relative z-10 pb-12 px-6 space-y-3">
-        <div class="bg-black/30 backdrop-blur-sm p-3 rounded-2xl border border-white/10 text-center mb-3">
-            <p class="text-xs text-emerald-100 font-light">
+    <!-- Parte Inferior: Tarjeta de bienvenida y Botones -->
+    <div class="relative z-10 pb-2 space-y-3">
+
+        <!-- Tarjeta de cristal esmerilado con mensaje -->
+        <div class="p-3.5 rounded-2xl bg-black/55 backdrop-blur-md border border-white/15 text-center shadow-lg">
+            <p class="text-xs text-slate-100 font-medium leading-relaxed drop-shadow">
                 Únete a la red ciudadana de reciclaje y canjea increíbles beneficios.
             </p>
         </div>
 
-        <a href="{{ route('login') }}" class="block w-full py-3.5 text-center font-semibold text-emerald-950 bg-white hover:bg-emerald-50 active:scale-[0.98] rounded-xl shadow-lg transition">
-            Iniciar Sesión
-        </a>
+        <!-- Botones de Acción idénticos a tu pantalla deseada -->
+        <div class="space-y-2.5 pt-1">
+            <!-- Iniciar Sesión (Blanco puro contrastado) -->
+            <a href="{{ route('login') }}"
+               class="w-full py-3.5 bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-sm rounded-2xl shadow-xl transition active:scale-95 flex items-center justify-center text-center">
+                Iniciar Sesión
+            </a>
 
-        <a href="{{ route('register') }}" class="block w-full py-3.5 text-center font-semibold text-white bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] border border-emerald-400/40 rounded-xl shadow-lg transition">
-            Registrarse
-        </a>
+            <!-- Registrarse (Verde esmeralda vivo) -->
+            <a href="{{ route('register') }}"
+               class="w-full py-3.5 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-sm rounded-2xl shadow-xl shadow-emerald-950/60 transition active:scale-95 flex items-center justify-center text-center border border-emerald-400/30">
+                Registrarse
+            </a>
+        </div>
+
+        <p class="text-[10px] text-center text-emerald-200/70 pt-1 font-medium">
+            EcoValor • Cusco Sostenible
+        </p>
     </div>
 
 </div>

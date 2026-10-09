@@ -10,25 +10,22 @@
         <!-- ========================================================= -->
         <!-- MARCA DE AGUA DE TU IMAGEN DE ENTORNO (PUBLIC/IMAGEN)    -->
         <!-- ========================================================= -->
-        <!-- Cambia 'entorno.png' o 'fondo.jpg' por el nombre real de tu archivo en public/imagen/ -->
-         <!-- NUEVO FONDO CLARO Y NÍTIDO -->
         <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                <!-- Imagen nítida sin filtros oscuros que la apaguen -->
-            <img src="{{ asset('imagen/Entorno_Ecovalor.jpg') }}"
-         alt="Fondo EcoValor"
-         class="w-full h-full object-cover opacity-30 scale-100">
+            <!-- Imagen de entorno nítida de fondo -->
+            <img src="{{ asset('imagen/entorno.jpg') }}"
+                 alt="Fondo EcoValor"
+                 class="w-full h-full object-cover opacity-60 scale-100">
 
-    <!-- Filtro sutil para que el texto siga siendo legible sin oscurecer la foto -->
-        <div class="absolute inset-0 bg-slate-950/30 backdrop-blur-[1px]"></div>
-</div>
-
+            <!-- Filtro sutil para legibilidad -->
+            <div class="absolute inset-0 bg-slate-950/30 backdrop-blur-[1px]"></div>
+        </div>
 
         <!-- ========================================================= -->
         <!-- CONTENIDO PRINCIPAL                                       -->
         <!-- ========================================================= -->
         <div class="relative z-10 space-y-5">
 
-            <!-- Cabecera compacta -->
+            <!-- Cabecera compacta con logo mini -->
             <div class="flex items-center justify-between">
                 <a href="{{ route('home') }}"
                    class="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition active:scale-95 shadow">
@@ -36,10 +33,17 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
                     </svg>
                 </a>
-                <div class="text-center">
-                    <p class="text-[10px] uppercase tracking-widest text-emerald-400 font-bold">EcoValor Cusco</p>
-                    <h2 class="text-sm font-bold text-white">Mis EcoPuntos</h2>
+
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-white/90 p-0.5 shadow-sm overflow-hidden flex items-center justify-center border border-emerald-400/40">
+                        <img src="{{ asset('imagen/Logo.png') }}" alt="Logo" class="w-full h-full object-contain rounded-full">
+                    </div>
+                    <div class="text-left">
+                        <p class="text-[10px] uppercase tracking-widest text-emerald-400 font-bold leading-tight">EcoValor Cusco</p>
+                        <h2 class="text-sm font-bold text-white leading-tight">Mis EcoPuntos</h2>
+                    </div>
                 </div>
+
                 <a href="{{ route('beneficios.index') }}"
                    class="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 text-emerald-400 hover:text-emerald-300 flex items-center justify-center transition active:scale-95 shadow" title="Canjes">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,13 +52,15 @@
                 </a>
             </div>
 
-            <!-- Tarjeta Principal de Puntos Compacta -->
+            <!-- Tarjeta Principal de Puntos con LOGO en transparencia de fondo -->
             <div class="relative bg-gradient-to-br from-emerald-800 via-emerald-700 to-teal-900 rounded-2xl p-5 text-white shadow-lg shadow-emerald-950/60 border border-emerald-400/20 overflow-hidden">
 
-                <!-- Silueta de hoja en la esquina -->
-                <svg class="absolute -right-5 -bottom-5 w-32 h-32 text-white/10 fill-current pointer-events-none" viewBox="0 0 24 24">
-                    <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
-                </svg>
+                <!-- MARCA DE AGUA DEL LOGO ECOVALOR -->
+                <div class="absolute -right-4 -bottom-4 w-36 h-36 rounded-full overflow-hidden pointer-events-none select-none opacity-20 filter contrast-125">
+                    <img src="{{ asset('imagen/Logo_Ecovalor.jpg') }}"
+                         alt="Marca de agua Logo"
+                         class="w-full h-full object-contain mix-blend-screen">
+                </div>
 
                 <div class="relative z-10">
                     <div class="flex justify-between items-center mb-1">

@@ -1,18 +1,26 @@
 @extends('layouts.app')
-@section('title', 'Inicio')
+@section('title', 'Inicio - EcoValor Cusco')
 
 @section('content')
 <div class="relative min-h-screen bg-slate-950 text-slate-100 p-5 overflow-hidden">
 
     <!-- ========================================== -->
-    <!-- FONDO AMBIENTAL / MARCA DE AGUA DEL ENTORNO -->
+    <!-- FONDO AMBIENTAL CON OPACIDAD AJUSTADA      -->
     <!-- ========================================== -->
     <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <!-- Fotografía de entorno con opacidad suave al 25% -->
+        <img src="{{ asset('imagen/entorno.jpg') }}"
+             alt="Entorno Cusco"
+             class="absolute inset-0 w-full h-full object-cover opacity-700 filter saturate-125">
+
+        <!-- Velo oscuro para que el texto y los números se lean con total claridad -->
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/75 via-slate-950/90 to-slate-950"></div>
+
         <!-- Resplandor verde superior (luz ambiental) -->
         <div class="absolute -top-24 -left-24 w-80 h-80 bg-emerald-500/15 rounded-full blur-3xl"></div>
         <div class="absolute top-1/3 -right-24 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl"></div>
 
-        <!-- Silueta de agua ecológica en el fondo general -->
+        <!-- Silueta vectorial ecológica sutil -->
         <svg class="absolute top-10 right-[-30px] w-72 h-72 text-emerald-500/[0.04] fill-current" viewBox="0 0 24 24">
             <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
         </svg>
@@ -21,35 +29,43 @@
     <div class="relative z-10 max-w-md mx-auto space-y-6">
 
         <!-- ========================================== -->
-        <!-- SALUDO Y NIVEL CIUDADANO                  -->
+        <!-- SALUDO Y ENLACE AL PERFIL DEL USUARIO      -->
         <!-- ========================================== -->
         <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 p-[2px] shadow-md shadow-emerald-950/50">
-                    <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center font-bold text-sm text-emerald-300">
-                        {{ strtoupper(substr($user->name, 0, 2)) }}
+            <!-- Tocar el avatar o el nombre lleva a /perfil -->
+            <a href="{{ url('/perfil') }}"
+               class="flex items-center gap-3 group transition active:scale-95"
+               title="Ver mi perfil">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 p-[2px] shadow-md shadow-emerald-950/50 group-hover:ring-2 group-hover:ring-emerald-400/50 transition">
+                    <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center font-bold text-sm text-emerald-300 group-hover:bg-slate-800 transition">
+                        {{ strtoupper(substr($user->name ?? 'U', 0, 2)) }}
                     </div>
                 </div>
                 <div>
-                    <p class="text-[11px] uppercase tracking-wider text-emerald-400 font-semibold">Cusco Sostenible</p>
-                    <h3 class="text-base font-bold text-white leading-tight">{{ $user->name }}</h3>
+                    <p class="text-[11px] uppercase tracking-wider text-emerald-400 font-semibold flex items-center gap-1">
+                        Cusco Sostenible
+                        <svg class="w-3 h-3 text-emerald-400/70 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </p>
+                    <h3 class="text-base font-bold text-white leading-tight group-hover:text-emerald-300 transition">
+                        {{ $user->name }}
+                    </h3>
                 </div>
-            </div>
+            </a>
 
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold rounded-full shadow-sm">
+            <!-- Etiqueta de nivel que también lleva a perfil -->
+            <a href="{{ url('/perfil') }}"
+               class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold rounded-full shadow-sm hover:bg-emerald-500/25 active:scale-95 transition">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                {{ $user->nivel }}
-            </span>
+                {{ $user->nivel ?? 'EcoCiudadano' }}
+            </a>
         </div>
 
         <!-- ========================================== -->
         <!-- TARJETA DE PUNTOS CON WATERMARK DEL LOGO  -->
         <!-- ========================================== -->
         <div class="relative bg-gradient-to-br from-emerald-800 via-emerald-700 to-teal-900 rounded-3xl p-6 text-white shadow-xl shadow-emerald-950/50 border border-emerald-500/20 overflow-hidden">
-
-            <!-- MARCA DE AGUA DEL LOGO EN LA TARJETA -->
-            <!-- Si tienes una imagen del logo en public/images/logo.png, puedes descomentar la siguiente línea: -->
-            <!-- <img src="{{ asset('images/logo.png') }}" alt="Logo" class="absolute -right-6 -bottom-6 w-44 h-44 object-contain opacity-15 pointer-events-none select-none"> -->
 
             <!-- Logo ecológico vectorial en filigrana/watermark -->
             <svg class="absolute -right-8 -bottom-8 w-48 h-48 text-white/10 fill-current pointer-events-none select-none" viewBox="0 0 24 24">
@@ -132,9 +148,11 @@
         <div>
             <div class="flex justify-between items-center mb-3">
                 <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Actividad Reciente</h4>
-                <a href="{{ route('entrega.historial') }}" class="text-xs text-emerald-400 hover:text-emerald-300 font-medium transition">
-                    Ver historial &rarr;
-                </a>
+                @if(Route::has('entrega.historial'))
+                    <a href="{{ route('entrega.historial') }}" class="text-xs text-emerald-400 hover:text-emerald-300 font-medium transition">
+                        Ver historial &rarr;
+                    </a>
+                @endif
             </div>
 
             <div class="space-y-2.5">
