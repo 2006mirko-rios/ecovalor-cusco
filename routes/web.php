@@ -47,3 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil.index');
     Route::post('/perfil/actualizar', [PerfilController::class, 'actualizar'])->name('perfil.actualizar');
 });
+
+
+Route::get('/', function () {
+    return view('descargar');
+});
