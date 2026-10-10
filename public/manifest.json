@@ -3,22 +3,14 @@
   "short_name": "EcoValor",
   "description": "Plataforma de reciclaje y recompensas ambientales en Cusco",
   "start_url": "/inicio",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0d1d17",
   "theme_color": "#0d1d17",
   "orientation": "portrait",
   "icons": [
-    {
-      "src": "/imagen/logo.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/imagen/entorno.jpg",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    }
+    { "src": "/imagen/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/imagen/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/imagen/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
