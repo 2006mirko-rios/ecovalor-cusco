@@ -36,7 +36,7 @@
 
                 <div class="flex items-center gap-2">
                     <div class="w-6 h-6 rounded-full bg-white/90 p-0.5 shadow-sm overflow-hidden flex items-center justify-center border border-emerald-400/40">
-                        <img src="{{ asset('imagen/Logo.png') }}" alt="Logo" class="w-full h-full object-contain rounded-full">
+                        <img src="{{ asset('imagen/logo.png') }}" alt="Logo" class="w-full h-full object-contain rounded-full">
                     </div>
                     <div class="text-left">
                         <p class="text-[10px] uppercase tracking-widest text-emerald-400 font-bold leading-tight">EcoValor Cusco</p>
@@ -57,7 +57,7 @@
 
                 <!-- MARCA DE AGUA DEL LOGO ECOVALOR -->
                 <div class="absolute -right-4 -bottom-4 w-36 h-36 rounded-full overflow-hidden pointer-events-none select-none opacity-20 filter contrast-125">
-                    <img src="{{ asset('imagen/Logo_Ecovalor.jpg') }}"
+                    <img src="{{ asset('imagen/logo.png') }}"
                          alt="Marca de agua Logo"
                          class="w-full h-full object-contain mix-blend-screen">
                 </div>

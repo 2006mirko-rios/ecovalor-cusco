@@ -30,7 +30,7 @@
 
             <div class="flex items-center gap-2">
                 <div class="w-6 h-6 rounded-full bg-white p-0.5 shadow-sm overflow-hidden flex items-center justify-center border border-emerald-300">
-                    <img src="{{ asset('imagen/Logo.png') }}" alt="Logo" class="w-full h-full object-contain rounded-full">
+                    <img src="{{ asset('imagen/logo.png') }}" alt="Logo" class="w-full h-full object-contain rounded-full">
                 </div>
                 <h2 class="text-sm font-extrabold text-slate-800 tracking-wide">Mi Perfil</h2>
             </div>

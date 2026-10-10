@@ -41,7 +41,7 @@
 
             <div class="flex items-center gap-2">
                 <div class="w-8 h-8 rounded-full bg-white/95 p-0.5 shadow-sm overflow-hidden flex items-center justify-center border border-emerald-400/40">
-                    <img src="{{ asset('imagen/Logo.png') }}" alt="Logo EcoValor" class="w-full h-full object-contain rounded-full">
+                    <img src="{{ asset('imagen/logo.png') }}" alt="Logo EcoValor" class="w-full h-full object-contain rounded-full">
                 </div>
                 <div class="text-left">
                     <p class="text-[10px] uppercase tracking-widest text-emerald-400 font-bold leading-tight">EcoValor Cusco</p>

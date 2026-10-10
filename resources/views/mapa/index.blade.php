@@ -8,7 +8,7 @@
     {{-- Fondo de entorno ambiental --}}
     <div class="pointer-events-none absolute inset-0">
         <img
-            src="{{ asset('imagen/entorno.png') }}"
+            src="{{ asset('imagen/entorno.jpg') }}"
             alt=""
             class="h-full w-full object-cover opacity-40"
             onerror="this.onerror=null; this.src='{{ asset('images/entorno.png') }}';"
