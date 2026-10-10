@@ -7,7 +7,7 @@
 
     <!-- Fondo sutil con imagen de Cusco -->
     <div class="absolute inset-0 z-0 opacity-20">
-        <img src="{{ asset('imagen/Entorno_Ecovalor.jpg') }}" alt="Cusco" class="w-full h-full object-cover">
+        <img src="{{ asset('imagen/entorno.jpg') }}" alt="Cusco" class="w-full h-full object-cover">
     </div>
 
     <!-- Encabezado -->
@@ -17,7 +17,7 @@
         </a>
         <div class="flex items-center space-x-3">
             <div class="w-12 h-12 bg-white rounded-full p-1 border-2 border-emerald-400 flex items-center justify-center shadow-md">
-                <img src="{{ asset('imagen/Logo_Ecovalor.jpg') }}" alt="Logo" class="w-full h-full object-contain">
+                <img src="{{ asset('imagen/logo.png') }}" alt="Logo" class="w-full h-full object-contain">
             </div>
             <div>
                 <h1 class="text-xl font-bold text-white">Iniciar Sesión</h1>

@@ -7,7 +7,7 @@
 
     <!-- 1. IMAGEN DE FONDO (ENTORNO CUSCO) -->
     <img
-        src="{{ asset('imagen/Entorno_Ecovalor.jpg') }}"
+        src="{{ asset('imagen/entorno.jpg') }}"
         alt="Entorno Cusco"
         class="absolute inset-0 w-full h-full object-cover object-center z-0 scale-105"
         onerror="this.onerror=null; this.src='{{ asset('images/entorno-cusco.jpg') }}';"
@@ -36,7 +36,7 @@
         <div class="flex items-center gap-3 mb-4">
             <div class="w-10 h-10 rounded-full bg-white p-0.5 shadow-lg shadow-emerald-950/50 border-2 border-emerald-400 shrink-0">
                 <img
-                    src="{{ asset('imagen/Logo_Ecovalor.jpg') }}"
+                    src="{{ asset('imagen/logo.png') }}"
                     alt="Logo EcoValor"
                     class="w-full h-full object-cover rounded-full"
                     onerror="this.onerror=null; this.src='{{ asset('images/logo-ecovalor.jpg') }}';"
